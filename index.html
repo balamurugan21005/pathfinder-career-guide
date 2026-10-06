@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f7f2">
+  <title>Pathfinder | Career Guidance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="auth-screen" id="auth-screen">
+    <section class="auth-story" aria-label="Pathfinder">
+      <a class="brand auth-brand" href="#signin" aria-label="Pathfinder home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>pathfinder<span class="brand-period">.</span></span>
+      </a>
+      <div class="auth-story-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT CHAPTER</p>
+        <h1>Find a direction<br>worth <em>trying.</em></h1>
+        <p>Keep your interests, ideas, and next steps in one place. You do not need to have it all figured out.</p>
+      </div>
+      <div class="auth-story-footer"><span>CAREER EXPLORATION, AT YOUR PACE</span><span>01 <i></i> 04</span></div>
+      <span class="auth-orbit auth-orbit-one" aria-hidden="true"></span><span class="auth-orbit auth-orbit-two" aria-hidden="true"></span>
+    </section>
+    <section class="auth-side" aria-labelledby="auth-title">
+      <div class="auth-mobile-brand"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span>pathfinder<span class="brand-period">.</span></span></div>
+      <div class="auth-form-wrap">
+        <p class="eyebrow eyebrow-small">YOUR STUDENT WORKSPACE</p>
+        <h2 id="auth-title">Welcome back.</h2>
+        <p class="auth-subtitle" id="auth-subtitle">Sign in to pick up where you left off.</p>
+        <div class="auth-switch" role="tablist" aria-label="Account access">
+          <button type="button" class="auth-tab active" id="signin-tab" role="tab" aria-selected="true" data-auth-mode="signin">Sign in</button>
+          <button type="button" class="auth-tab" id="register-tab" role="tab" aria-selected="false" data-auth-mode="register">Create account</button>
+          <button type="button" class="auth-tab" id="admin-tab" role="tab" aria-selected="false" data-auth-mode="admin">Admin sign in</button>
+        </div>
+        <form class="auth-form" id="auth-form">
+          <label class="form-label" for="auth-name" id="auth-name-label" hidden>Your name</label>
+          <input class="auth-input" id="auth-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="60" placeholder="Your name" hidden>
+          <label class="form-label" for="auth-email">Email address</label>
+          <input class="auth-input" id="auth-email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.edu" required>
+          <label class="form-label" for="auth-password">Password</label>
+          <div class="password-wrap"><input class="auth-input" id="auth-password" name="password" type="password" autocomplete="current-password" minlength="10" maxlength="128" placeholder="At least 10 characters" required><button class="password-toggle" type="button" id="password-toggle" aria-label="Show password" aria-pressed="false">Show</button></div>
+          <p class="auth-error" id="auth-error" role="alert" hidden></p>
+          <button class="button button-dark auth-submit" id="auth-submit" type="submit">Sign in <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="auth-privacy">Your account keeps your profile and saved career paths together.</p>
+      </div>
+      <p class="auth-footer">MADE FOR THE CURIOUS, NOT THE CERTAIN.</p>
+    </section>
+  </main>
+
+  <div class="app-shell" id="app-shell" hidden>
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview" aria-label="Pathfinder home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>pathfinder<span class="brand-period">.</span></span>
+      </a>
+
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <button class="nav-link active" type="button" data-view="overview">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+          <span>Overview</span>
+        </button>
+        <button class="nav-link" type="button" data-view="careers">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2"/></svg>
+          <span>Career paths</span><span class="nav-count">06</span>
+        </button>
+        <button class="nav-link" type="button" data-view="roadmap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="19" r="2"/><path d="M8 5h3a3 3 0 0 1 3 3v1a3 3 0 0 0 3 3M8 19h3a3 3 0 0 0 3-3v-1"/></svg>
+          <span>My roadmap</span>
+        </button>
+        <button class="nav-link" type="button" data-view="skills">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7v5c0 4.5 3.4 7.7 8 9 4.6-1.3 8-4.5 8-9V7l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>Skills profile</span>
+        </button>
+        <button class="nav-link" type="button" data-view="coach">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m15.36-6.36-2.12 2.12M7.76 16.24l-2.12 2.12m12.72 0-2.12-2.12M7.76 7.76 5.64 5.64"/><circle cx="12" cy="12" r="5"/></svg>
+          <span>AI career guide</span>
+        </button>
+        <button class="nav-link" type="button" data-view="saved"><span class="nav-link-symbol" aria-hidden="true">♡</span><span>Saved paths</span></button>
+        <button class="nav-link" type="button" data-view="opportunities"><span class="nav-link-symbol" aria-hidden="true">↗</span><span>Opportunities</span></button>
+        <button class="nav-link" type="button" data-view="placement"><span class="nav-link-symbol" aria-hidden="true">◎</span><span>Placement prep</span></button>
+        <button class="nav-link" type="button" data-view="resume"><span class="nav-link-symbol" aria-hidden="true">▤</span><span>Resume builder</span></button>
+        <button class="nav-link" id="activity-nav-link" type="button" data-view="activity" hidden>
+          <span class="nav-link-symbol" aria-hidden="true">♧</span><span>Activity history</span><span class="activity-nav-count" id="activity-nav-count">0</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-note">
+        <div class="note-spark" aria-hidden="true">✳</div>
+        <p class="note-title">Your next chapter<br>starts with a question.</p>
+        <p class="note-copy">A little clarity can go a long way.</p>
+        <button class="note-link" type="button" data-open-assessment>Take the assessment <span aria-hidden="true">↗</span></button>
+      </div>
+
+      <button class="profile-mini" type="button" data-open-assessment aria-label="Edit student profile">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=96&q=80" alt="Student profile">
+        <span class="profile-mini-copy"><strong>Avery Morgan</strong><small>Computer Science · Year 2</small></span>
+        <svg class="profile-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu icon-button" id="menu-toggle" type="button" aria-label="Open navigation">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <div class="breadcrumb"><span>Workspace</span><span class="breadcrumb-slash">/</span><strong id="breadcrumb-current">Overview</strong></div>
+        <div class="topbar-actions">
+          <span class="term-label"><span class="status-dot"></span> Fall semester · 2026</span>
+          <div class="notification-wrap" id="admin-notification-wrap" hidden>
+            <button class="icon-button notification-button" id="notification-button" type="button" aria-label="Admin activity notifications" aria-expanded="false" aria-controls="notification-menu">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span class="notification-count" id="notification-count" hidden>0</span>
+            </button>
+            <section class="notification-menu" id="notification-menu" aria-label="Recent activity notifications" hidden>
+              <div class="notification-menu-heading"><strong>Recent activity</strong><button class="notification-link" id="notification-view-all" type="button">View all</button></div>
+              <div class="notification-preview" id="notification-preview"><p class="activity-empty">No activity yet.</p></div>
+            </section>
+          </div>
+          <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch theme">◐</button>
+          <button class="signout-button" id="logout-button" type="button">Sign out</button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <section class="view-panel active" id="view-overview" aria-labelledby="welcome-title">
+          <div class="welcome-row">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line"></span> YOUR CAREER COMPASS</p>
+              <h1 id="welcome-title">Good morning, <span id="welcome-name">Avery</span><span class="heading-period">.</span></h1>
+              <p class="welcome-subtitle">Small steps today. A future that feels like yours.</p>
+            </div>
+            <button class="button button-dark" type="button" data-open-assessment><span class="button-spark" aria-hidden="true">✳</span> Refine my matches</button>
+          </div>
+
+          <section class="hero-panel" aria-label="Career profile progress">
+            <div class="hero-copy">
+              <div class="hero-kicker"><span class="hero-kicker-dot"></span> YOUR STARTING POINT</div>
+              <h2>A future built around<br><em>what makes you, you.</em></h2>
+              <p>Your interests are a pretty good place to start. Let’s turn them into a direction you can feel good about.</p>
+              <button class="hero-link" type="button" data-open-assessment>Complete your profile <span aria-hidden="true">→</span></button>
+            </div>
+            <div class="hero-progress-wrap">
+              <div class="progress-ring" aria-label="Profile 68 percent complete"><span><strong id="profile-progress">68</strong><small>%</small></span></div>
+              <div class="progress-caption"><strong>Profile progress</strong><span>Just a few things left</span></div>
+              <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+            </div>
+            <span class="hero-stamp" aria-hidden="true">✳</span>
+          </section>
+
+          <div class="section-heading match-heading">
+            <div><p class="eyebrow eyebrow-small">A GOOD PLACE TO BEGIN</p><h2>Paths worth a look<span class="heading-period">.</span></h2></div>
+            <button class="text-link" type="button" data-view="careers">Explore all paths <span aria-hidden="true">→</span></button>
+          </div>
+
+          <div class="career-grid featured-grid" id="featured-careers"></div>
+
+          <div class="bottom-grid">
+            <section class="panel roadmap-preview">
+              <div class="panel-heading"><div><p class="eyebrow eyebrow-small">YOUR NEXT MOVES</p><h2>A little momentum</h2></div><button class="round-link" type="button" data-view="roadmap" aria-label="View roadmap">↗</button></div>
+              <div class="mini-roadmap">
+                <div class="mini-step complete"><span class="step-marker">✓</span><span><strong>Explore what you enjoy</strong><small>Interests &amp; strengths</small></span><span class="step-state">DONE</span></div>
+                <div class="mini-step current"><span class="step-marker">02</span><span><strong>Choose a direction to test</strong><small>Pick one path that feels interesting</small></span><span class="step-state">NEXT</span></div>
+                <div class="mini-step"><span class="step-marker">03</span><span><strong>Build your first project</strong><small>Make something small, learn a lot</small></span><span class="step-state">LATER</span></div>
+              </div>
+            </section>
+
+            <section class="panel snapshot-panel">
+              <div class="panel-heading"><div><p class="eyebrow eyebrow-small">YOUR PROFILE</p><h2>What makes you tick</h2></div><button class="round-link" type="button" data-view="skills" aria-label="View skills profile">↗</button></div>
+              <p class="snapshot-copy">Your mix of curiosity and creative problem-solving opens more doors than you might think.</p>
+              <div class="tag-list"><span class="tag tag-green">Problem solving</span><span class="tag tag-pink">Creativity</span><span class="tag tag-blue">Technology</span></div>
+              <button class="snapshot-edit" type="button" data-open-assessment>Update your interests <span aria-hidden="true">→</span></button>
+            </section>
+          </div>
+
+          <section class="demo-section" aria-labelledby="demo-title">
+            <div class="section-heading">
+              <div><p class="eyebrow eyebrow-small">LEARN BY BUILDING</p><h2 id="demo-title">Pathfinder Skill Studio<span class="heading-period">.</span></h2></div>
+              <p class="demo-intro">Free video courses, from first steps to advanced skills.</p>
+            </div>
+            <div class="studio-banner">
+              <span class="studio-banner-icon" aria-hidden="true">✳</span>
+              <div><strong id="course-progress-title">Your learning journey</strong><p id="course-progress-copy">Pick a course, learn at your pace, and track what you finish.</p></div>
+              <div class="studio-progress" role="progressbar" aria-label="Course completion progress" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><span id="course-progress-bar"></span></div>
+              <strong class="studio-progress-count" id="course-progress-count">0 / 7</strong>
+            </div>
+            <div class="course-toolbar">
+              <label class="course-search" for="course-search"><span aria-hidden="true">⌕</span><input id="course-search" type="search" placeholder="Find a course or skill" autocomplete="off"></label>
+              <div class="course-filters" role="group" aria-label="Filter courses by level">
+                <button class="course-filter active" type="button" data-course-level="All" aria-pressed="true">All levels</button>
+                <button class="course-filter" type="button" data-course-level="Beginner" aria-pressed="false">Beginner</button>
+                <button class="course-filter" type="button" data-course-level="Intermediate" aria-pressed="false">Intermediate</button>
+                <button class="course-filter" type="button" data-course-level="Advanced" aria-pressed="false">Advanced</button>
+              </div>
+            </div>
+            <p class="course-results" id="course-results" aria-live="polite"></p>
+            <div class="course-grid" id="course-library"></div>
+            <div class="course-empty" id="course-empty" hidden>No courses match yet. Try a different search or level.</div>
+            <details class="instructor-panel" id="instructor-panel">
+              <summary>Instructor tools <span>Local demo · uploads stay in this browser</span></summary>
+              <form class="instructor-form" id="instructor-form">
+                <label>Course title<input name="title" maxlength="80" required placeholder="e.g. Intro to product design"></label>
+                <label>Category<input name="category" maxlength="40" required placeholder="e.g. Design"></label>
+                <label>Description<textarea name="description" maxlength="240" rows="2" required placeholder="What will learners explore?"></textarea></label>
+                <label>Video file (MP4/WebM, up to 100 MB)<input name="video" type="file" accept="video/mp4,video/webm,video/ogg" required></label>
+                <label>Thumbnail image (optional)<input name="thumbnail" type="file" accept="image/png,image/jpeg,image/webp"></label>
+                <button class="button button-dark" type="submit">Add local course <span aria-hidden="true">＋</span></button>
+                <p class="instructor-note">Demo upload only. A production deployment should authorize instructors on the server and store media in managed object storage.</p>
+              </form>
+            </details>
+          </section>
+        </section>
+
+        <section class="view-panel" id="view-careers" aria-labelledby="careers-title" hidden>
+          <div class="view-intro">
+            <p class="eyebrow"><span class="eyebrow-line"></span> CAREER EXPLORER</p>
+            <h1 id="careers-title">Follow your curiosity<span class="heading-period">.</span></h1>
+            <p class="welcome-subtitle">A few directions that connect with your interests. There’s no wrong place to start.</p>
+          </div>
+          <div class="career-toolbar">
+            <label class="search-box" for="career-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg><input id="career-search" type="search" placeholder="Search roles or skills" autocomplete="off"><kbd>/</kbd></label>
+            <div class="filter-group" role="group" aria-label="Filter careers">
+              <button class="filter-button active" type="button" data-filter="All">All paths</button>
+              <button class="filter-button" type="button" data-filter="Technology">Technology</button>
+              <button class="filter-button" type="button" data-filter="Creative">Creative</button>
+              <button class="filter-button" type="button" data-filter="People">People</button>
+            </div>
+          </div>
+          <p class="results-count" id="results-count" aria-live="polite"></p>
+          <div class="career-grid directory-grid" id="career-directory"></div>
+          <div class="empty-state" id="empty-state" hidden><span>⌕</span><h3>No paths found just yet.</h3><p>Try another search or choose a different area.</p></div>
+        </section>
+
+        <section class="view-panel" id="view-roadmap" aria-labelledby="roadmap-title" hidden>
+          <div class="view-intro">
+            <p class="eyebrow"><span class="eyebrow-line"></span> YOUR PERSONAL ROADMAP</p>
+            <h1>Make it real, one step at a time<span class="heading-period">.</span></h1>
+            <p class="welcome-subtitle">No pressure to have it all figured out. Just keep moving toward what interests you.</p>
+          </div>
+          <div class="roadmap-layout">
+            <div class="roadmap-track">
+              <article class="roadmap-card done-card"><div class="track-node">✓</div><div class="roadmap-card-top"><span class="roadmap-label">CHAPTER 01 · COMPLETE</span><span class="roadmap-date">SEP 12</span></div><h2>Get to know yourself</h2><p>Notice what energizes you, what comes naturally, and the problems you love to solve.</p><div class="roadmap-tags"><span>Interests</span><span>Strengths</span><span>Values</span></div></article>
+              <article class="roadmap-card active-card"><div class="track-node">02</div><div class="roadmap-card-top"><span class="roadmap-label">CHAPTER 02 · UP NEXT</span><span class="roadmap-date">2 WEEKS</span></div><h2 id="roadmap-focus-title">Try on a career path</h2><p id="roadmap-focus-copy">Choose one role that catches your eye. Talk to someone in the field or explore a beginner project.</p><div class="roadmap-action"><button class="button button-dark" type="button" data-view="careers">Browse career paths <span aria-hidden="true">→</span></button><span class="roadmap-hint">About 30 minutes</span></div></article>
+              <article class="roadmap-card future-card"><div class="track-node">03</div><div class="roadmap-card-top"><span class="roadmap-label">CHAPTER 03 · COMING UP</span><span class="roadmap-date">YOUR PACE</span></div><h2>Make something small</h2><p>A mini project, a new class, a volunteer day. Give your curiosity somewhere to go.</p><div class="roadmap-tags"><span>Learn by doing</span><span>Keep it small</span></div></article>
+              <article class="roadmap-card future-card"><div class="track-node">04</div><div class="roadmap-card-top"><span class="roadmap-label">CHAPTER 04 · DOWN THE ROAD</span></div><h2>Build your next chapter</h2><p>Gather what you have learned and decide what you want to explore next.</p></article>
+            </div>
+            <aside class="roadmap-aside"><span class="aside-icon">✳</span><p class="eyebrow eyebrow-small">A NOTE TO SELF</p><h3>You don’t need the whole map.</h3><p>Careers grow and change as you do. The goal is to find a next step worth taking, not a perfect plan.</p><button class="text-link" type="button" data-open-assessment>Revisit my profile <span aria-hidden="true">→</span></button></aside>
+          </div>
+        </section>
+
+        <section class="view-panel" id="view-skills" aria-labelledby="skills-title" hidden>
+          <div class="view-intro">
+            <p class="eyebrow"><span class="eyebrow-line"></span> YOUR SKILLS PROFILE</p>
+            <h1>More than a list of skills<span class="heading-period">.</span></h1>
+            <p class="welcome-subtitle">Your strengths are clues. Together, they tell a story about how you like to work.</p>
+          </div>
+          <div class="skills-layout">
+            <section class="panel strengths-panel"><div class="panel-heading"><div><p class="eyebrow eyebrow-small">YOUR STRENGTHS</p><h2>Things you bring to the table</h2></div><button class="round-link" type="button" data-open-assessment aria-label="Edit strengths">↗</button></div>
+              <div class="skill-row"><div class="skill-icon skill-icon-green">⌘</div><div class="skill-info"><div><strong>Creative problem-solving</strong><span>Feels natural</span></div><div class="skill-meter"><span style="--skill-level: 88%"></span></div></div></div>
+              <div class="skill-row"><div class="skill-icon skill-icon-pink">✳</div><div class="skill-info"><div><strong>Curiosity &amp; learning</strong><span>A real strength</span></div><div class="skill-meter"><span style="--skill-level: 82%"></span></div></div></div>
+              <div class="skill-row"><div class="skill-icon skill-icon-blue">↗</div><div class="skill-info"><div><strong>Working with technology</strong><span>Growing quickly</span></div><div class="skill-meter"><span style="--skill-level: 72%"></span></div></div></div>
+              <div class="skill-row"><div class="skill-icon skill-icon-yellow">◎</div><div class="skill-info"><div><strong>Communication</strong><span>Ready to explore</span></div><div class="skill-meter"><span style="--skill-level: 64%"></span></div></div></div>
+            </section>
+            <section class="panel interests-panel"><div class="panel-heading"><div><p class="eyebrow eyebrow-small">THINGS THAT INTEREST YOU</p><h2>Your curiosity, lately</h2></div></div><div class="interest-cloud"><span class="interest-pill interest-large">Designing useful things</span><span class="interest-pill interest-green">How technology works</span><span class="interest-pill interest-blue">Creative projects</span><span class="interest-pill interest-small">Helping people</span><span class="interest-pill interest-pink">New ideas</span></div><div class="interest-footer"><span class="interest-spark">✳</span><p>Interests can change. Your profile can too.</p></div><button class="button button-outline" type="button" data-open-assessment>Refresh my profile <span aria-hidden="true">→</span></button></section>
+          </div>
+          <section class="panel skill-gap-panel">
+            <div class="panel-heading"><div><p class="eyebrow eyebrow-small">A PRACTICAL NEXT STEP</p><h2>Explore your skill gap</h2><p class="skill-gap-intro">Choose a path and the skills you already feel comfortable with.</p></div></div>
+            <form id="skill-gap-form" class="skill-gap-form">
+              <label for="skill-gap-career">Career path<select id="skill-gap-career" name="career"></select></label>
+              <fieldset><legend>Skills you already have</legend><div id="skill-gap-options" class="skill-gap-options"></div></fieldset>
+            </form>
+            <div class="skill-gap-result" id="skill-gap-result" aria-live="polite"></div>
+            <button class="button button-dark" type="button" data-scroll-course>Find a learning course →</button>
+          </section>
+        </section>
+
+        <section class="view-panel" id="view-coach" aria-labelledby="coach-title" hidden>
+          <div class="view-intro coach-intro">
+            <p class="eyebrow"><span class="eyebrow-line"></span> YOUR CAREER GUIDE</p>
+            <h1 id="coach-title">A good question can open a door<span class="heading-period">.</span></h1>
+            <p class="welcome-subtitle">Get tailored ideas, small experiments, and thoughtful answers as you explore.</p>
+          </div>
+          <div class="coach-layout">
+            <section class="coach-workspace" aria-label="Career guide conversation">
+              <div class="coach-toolbar"><div class="coach-identity"><span class="coach-avatar" aria-hidden="true">✳</span><span><strong>Pathfinder guide</strong><small id="coach-status">Checking guide availability…</small></span></div><div class="coach-mode" role="group" aria-label="Guide mode"><button type="button" class="coach-mode-button active" data-coach-mode="explore" aria-pressed="true">Explore</button><button type="button" class="coach-mode-button" data-coach-mode="projects" aria-pressed="false">Projects</button><button type="button" class="coach-mode-button" data-coach-mode="practice" aria-pressed="false">Practice</button></div></div>
+              <div class="coach-transcript" id="coach-transcript" role="log" aria-live="polite" aria-relevant="additions text"><article class="coach-message assistant-message"><span class="coach-message-label">YOUR GUIDE</span><p>Hi <span id="coach-name">there</span>. What are you curious about? I can help you explore paths, try a small project, or practice talking about your strengths.</p></article></div>
+              <div class="coach-prompts" aria-label="Suggested questions"><button type="button" data-coach-prompt="What careers mix creativity and technology?">Careers mixing creativity and technology</button><button type="button" data-coach-prompt="Suggest a beginner project I could try this week.">A beginner project for this week</button><button type="button" data-coach-prompt="Help me explain my strengths in an interview.">Practice talking about my strengths</button></div>
+              <form class="coach-composer" id="coach-form"><label class="visually-hidden" for="coach-input">Ask your career guide</label><textarea id="coach-input" name="prompt" rows="2" maxlength="1200" placeholder="What would you like to figure out?" required></textarea><button class="button button-dark" id="coach-send" type="submit" aria-label="Send message"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+              <p class="coach-disclaimer">Career suggestions are starting points, not guarantees. Avoid sharing sensitive personal information.</p>
+            </section>
+            <aside class="coach-aside"><p class="eyebrow eyebrow-small">A BETTER NEXT STEP</p><h2>Stay curious, stay in charge.</h2><p>The guide can offer options and help you reflect. Your values and choices lead the way.</p><div class="coach-aside-rule"></div><strong>Try this conversation</strong><p class="coach-aside-tip">Tell the guide what you enjoy, what you are learning, and what kind of day gives you energy.</p><button class="text-link" type="button" data-open-assessment>Update my interests <span aria-hidden="true">→</span></button></aside>
+          </div>
+        </section>
+
+        <section class="view-panel" id="view-saved" aria-labelledby="saved-title" hidden>
+          <div class="view-intro"><p class="eyebrow"><span class="eyebrow-line"></span> YOUR SHORTLIST</p><h1 id="saved-title">Paths you’ve saved<span class="heading-period">.</span></h1><p class="welcome-subtitle">Keep the possibilities that sparked your curiosity close by.</p></div>
+          <div class="career-grid directory-grid" id="saved-careers"></div>
+          <div class="empty-state saved-empty" id="saved-empty"><span>♡</span><h3>Your shortlist starts here.</h3><p>Save any career path to compare it and explore it later.</p><button class="button button-dark" type="button" data-view="careers">Explore career paths →</button></div>
+        </section>
+
+        <section class="view-panel" id="view-opportunities" aria-labelledby="opportunities-title" hidden>
+          <div class="view-intro"><p class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR NEXT EXPERIENCE</p><h1 id="opportunities-title">Opportunities to grow<span class="heading-period">.</span></h1><p class="welcome-subtitle">Curated starting points for internships, projects, and hands-on learning. Check eligibility and deadlines with each provider.</p></div>
+          <div class="opportunity-grid">
+            <article class="opportunity-card"><span class="opportunity-type">INTERNSHIPS</span><h2>Explore verified openings</h2><p>Search internships by role, location, and experience level.</p><a class="button button-dark" href="https://www.linkedin.com/jobs/internships/" target="_blank" rel="noopener noreferrer">Browse internships ↗</a></article>
+            <article class="opportunity-card"><span class="opportunity-type">STUDENT PROJECTS</span><h2>Build in public</h2><p>Find collaborative open-source issues and practice with real teams.</p><a class="button button-dark" href="https://goodfirstissue.dev/" target="_blank" rel="noopener noreferrer">Find beginner issues ↗</a></article>
+            <article class="opportunity-card"><span class="opportunity-type">LEARNING</span><h2>Strengthen your foundation</h2><p>Explore free, self-paced courses from trusted learning platforms.</p><a class="button button-dark" href="https://www.freecodecamp.org/learn/" target="_blank" rel="noopener noreferrer">Browse free learning ↗</a></article>
+          </div>
+          <p class="opportunity-disclaimer">Pathfinder does not verify or guarantee third-party opportunities. Always confirm details on the provider’s website.</p>
+        </section>
+
+        <section class="view-panel" id="view-placement" aria-labelledby="placement-title" hidden>
+          <div class="view-intro"><p class="eyebrow"><span class="eyebrow-line"></span> SHOW WHAT YOU CAN DO</p><h1 id="placement-title">Placement preparation<span class="heading-period">.</span></h1><p class="welcome-subtitle">Practice the habits that make interviews and applications feel more manageable.</p></div>
+          <div class="prep-grid">
+            <article class="panel prep-card"><span class="prep-icon">01</span><h2>Interview practice</h2><p>Rehearse common questions with supportive feedback from your career guide.</p><button class="button button-dark" type="button" data-view="coach" data-coach-practice>Practice with your guide →</button></article>
+            <article class="panel prep-card"><span class="prep-icon">02</span><h2>Technical foundations</h2><p>Choose a topic, solve small problems, and explain your thinking out loud.</p><a class="button button-outline" href="https://www.hackerrank.com/domains" target="_blank" rel="noopener noreferrer">Explore practice topics ↗</a></article>
+            <article class="panel prep-card"><span class="prep-icon">03</span><h2>Tell your project story</h2><p>Use Situation, Task, Action, Result to explain what you learned and contributed.</p><button class="button button-outline" type="button" data-view="resume">Build your resume →</button></article>
+          </div>
+        </section>
+
+        <section class="view-panel" id="view-resume" aria-labelledby="resume-title" hidden>
+          <div class="view-intro"><p class="eyebrow"><span class="eyebrow-line"></span> YOUR WORK, CLEARLY TOLD</p><h1 id="resume-title">Resume starter<span class="heading-period">.</span></h1><p class="welcome-subtitle">Create a simple text resume draft in your browser. Review it carefully before sharing.</p></div>
+          <form class="resume-form panel" id="resume-form">
+            <div class="resume-fields">
+              <label>Full name<input name="name" maxlength="80" required placeholder="Your name"></label>
+              <label>Email<input name="email" type="email" maxlength="120" required placeholder="you@example.edu"></label>
+              <label>Target role<input name="role" maxlength="100" required placeholder="e.g. Junior UX designer"></label>
+              <label>Education<input name="education" maxlength="180" required placeholder="Degree, institution, expected year"></label>
+            </div>
+            <label>Skills<input name="skills" maxlength="240" required placeholder="Research, Figma, prototyping"></label>
+            <label>Project highlight<textarea name="project" rows="4" maxlength="600" required placeholder="What did you build, what was your contribution, and what changed?"></textarea></label>
+            <button class="button button-dark" type="submit">Download resume draft <span aria-hidden="true">↓</span></button>
+          </form>
+        </section>
+
+        <section class="view-panel" id="view-activity" aria-labelledby="activity-title" hidden>
+          <div class="view-intro">
+            <p class="eyebrow"><span class="eyebrow-line"></span> ADMINISTRATION</p>
+            <h1 id="activity-title">Student activity<span class="heading-period">.</span></h1>
+            <p class="welcome-subtitle">Recent searches, course views, and guidance-section visits from registered users.</p>
+          </div>
+          <section class="activity-dashboard panel">
+            <div class="activity-dashboard-toolbar">
+              <div><strong id="activity-total">0 activities</strong><span id="activity-course-search-total">0 course searches</span><span id="activity-live-status" class="activity-live-status"><span></span> Live updates</span></div>
+              <div class="activity-actions">
+                <button class="button button-outline" id="activity-mark-all" type="button">Mark all read</button>
+                <button class="button button-outline" id="activity-clear" type="button">Clear history</button>
+              </div>
+            </div>
+            <div class="activity-history" id="activity-history" aria-live="polite"><p class="activity-empty">Loading activity…</p></div>
+            <button class="activity-load-more" id="activity-load-more" type="button" hidden>Load more activity</button>
+          </section>
+        </section>
+
+        <footer class="page-footer"><span>Made for the curious, not the certain.</span><span>PATHFINDER <span class="footer-dot">●</span> STUDENT EDITION</span></footer>
+      </div>
+      <div class="modal-backdrop" id="career-modal" hidden>
+        <section class="assessment-modal career-modal" role="dialog" aria-modal="true" aria-labelledby="career-modal-title">
+          <button class="modal-close icon-button" type="button" id="career-modal-close" aria-label="Close career details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          <p class="eyebrow"><span class="eyebrow-line"></span> CAREER PATH DETAILS</p>
+          <h2 id="career-modal-title"></h2><p id="career-modal-description" class="modal-copy"></p>
+          <div class="career-detail-block"><strong>Skills to explore</strong><p id="career-modal-skills"></p></div>
+          <div class="career-detail-block"><strong>A low-risk first step</strong><p id="career-modal-next-step"></p></div>
+          <div class="career-modal-actions"><button class="button button-outline" id="career-modal-save" type="button">Save this path ♡</button><button class="button button-dark" id="career-modal-roadmap" type="button">Build my roadmap →</button></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="assessment-modal" hidden>
+    <section class="assessment-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close icon-button" type="button" id="modal-close" aria-label="Close assessment"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      <p class="eyebrow"><span class="eyebrow-line"></span> A QUICK CHECK-IN</p>
+      <h2 id="modal-title">Let’s make this<br><em>feel more like you.</em></h2>
+      <p class="modal-copy">A couple of small clues help us point you toward more interesting paths.</p>
+      <form id="assessment-form">
+        <label class="form-label" for="interest-select">What would you like to explore?</label>
+        <select id="interest-select" name="interest" required>
+          <option value="Technology">Building with technology</option>
+          <option value="Creative">Making and designing things</option>
+          <option value="People">Helping people thrive</option>
+          <option value="All">A little bit of everything</option>
+        </select>
+        <label class="form-label" for="work-style">What sounds most like your kind of day?</label>
+        <select id="work-style" name="workStyle" required>
+          <option value="Making something">Making something from an idea</option>
+          <option value="Solving a puzzle">Solving a tricky puzzle</option>
+          <option value="Working with people">Working alongside people</option>
+          <option value="Learning something">Learning something brand new</option>
+        </select>
+        <button class="button button-dark modal-submit" type="submit">Save my check-in <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="modal-privacy">Your answers stay on this device.</p>
+    </section>
+  </div>
+  <div class="modal-backdrop video-modal-backdrop" id="video-modal" hidden>
+    <section class="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-title">
+      <button class="modal-close icon-button" type="button" id="video-modal-close" aria-label="Close course player"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      <p class="eyebrow"><span class="eyebrow-line"></span> SKILL STUDIO COURSE</p>
+      <div class="video-course-heading"><div><h2 id="video-title">Course title</h2><p id="video-course-meta"></p></div><span class="course-level" id="video-course-level"></span></div>
+      <div class="course-video-frame"><iframe id="course-player" title="Course video" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><video id="local-course-player" controls playsinline preload="metadata" hidden></video></div>
+      <div class="video-course-footer">
+        <p id="video-course-description"></p>
+        <div class="related-courses"><strong>Keep exploring</strong><div id="related-courses"></div></div>
+        <div class="video-modal-actions">
+          <button class="button button-outline" id="previous-course" type="button">← Previous course</button>
+          <button class="button button-dark" id="complete-course" type="button">Mark complete <span aria-hidden="true">✓</span></button>
+          <button class="button button-outline" id="next-course" type="button">Next course →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="auth.js" defer></script>
+</body>
+</html>

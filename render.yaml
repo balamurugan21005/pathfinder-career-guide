@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: pathfinder
+    runtime: node
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: MONGODB_URI
+        sync: false
+      - key: INSTRUCTOR_EMAILS
+        sync: false
